@@ -11,29 +11,41 @@ declare let google: any;
 })
 export class HomePage {
 
-  map: any;
-
   @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
-
+  map: any;
+  serviceMarker: any;
+  iconBase = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
   constructor() {}
 
   ionViewDidEnter() {
-    this.showMap();
+    this.initMap();
   }
 
-  showMap() {
-    const location = new google.maps.LatLng(33.645955, -117.843142);
-    const options = {
-      center: location,
-      zoom: 15,
-      disableDefaultUI: true
-    };
-    this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-    new google.maps.Marker({
+  initMap() {
+    this.map = new google.maps.Map(this.mapRef.nativeElement, {
+        zoom: 18,
+        center: { lat: 33.645955, lng: -117.843142},
+        disableDefaultUI: true
+      });
+    const currentLocationMarker = new google.maps.Marker({
       position: {lat: 33.646657, lng: -117.843475},
       map: this.map,
       title: 'Current Location'
-    });
+      });
+    currentLocationMarker.setMap(this.map);
   }
+
+  displayService(service){
+    if(this.serviceMarker){
+      this.serviceMarker.setMap(null);
+    }
+    this.serviceMarker = new google.maps.Marker({
+      position: service.latlng,
+      map: this.map,
+      title: service.title
+    });
+    this.serviceMarker.setMap(this.map);
+  }
+
 
 }

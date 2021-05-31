@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-service-toolbar',
@@ -7,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiceToolbarComponent implements OnInit {
 
+  @Input() calculateRoute: () => void;
   constructor() { }
 
   ngOnInit() {}
+
+  navigateRoute(){
+    console.log("hello");
+    this.calculateRoute();
+  }
 
 }

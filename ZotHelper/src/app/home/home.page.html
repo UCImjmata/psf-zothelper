@@ -9,7 +9,22 @@
 <ion-content [fullscreen]="true">
   <div #map id="map"></div>
 
-  <app-service-toolbar></app-service-toolbar>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="arrow-up-circle"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="displayService({latlng: {lat: 33.647432, lng: -117.845752}, title:'Parking'})">
+        <ion-icon name="bus-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="man" (click)="displayService({latlng: {lat: 33.647082, lng: -117.844066}, title: 'Bathroom'})"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="water" (click)="displayService({latlng: {lat:33.645265, lng: -117.842627}, title: 'water'})"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 
 </ion-content>
 
