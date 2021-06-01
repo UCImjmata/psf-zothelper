@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ViewChild, ElementRef } from '@angular/core';
 
+import * as busIcon from "assests/icon/bus-stop-icon.png";
+
+
 declare let google: any;
 
 
@@ -15,6 +18,19 @@ export class HomePage {
   map: any;
   serviceMarker: any;
   iconBase = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
+  icons: Record<string, {icon: string}>= {
+    Parking: {
+      icon: "bus-stop-icon.png"
+    },
+    Bathroom: {
+      icon: "toilet-icon.png"
+    },
+    water: {
+      icon: "water-icon.png"
+    }
+  };
+
+
   constructor() {}
 
   ionViewDidEnter() {
@@ -41,9 +57,11 @@ export class HomePage {
     }
     this.serviceMarker = new google.maps.Marker({
       position: service.latlng,
+      icon: this.icons[service.title].icon,
       map: this.map,
       title: service.title
     });
+    console.log(this.serviceMarker.title);
     this.serviceMarker.setMap(this.map);
   }
 
