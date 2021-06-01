@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewChild, ElementRef } from '@angular/core';
 
-import * as busIcon from "assests/icon/bus-stop-icon.png";
+//import * as busIcon from "ZotHelper/src/assets/icon/book-icon.png";
 
 
 declare let google: any;
@@ -20,13 +20,13 @@ export class HomePage {
   iconBase = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
   icons: Record<string, {icon: string}>= {
     Parking: {
-      icon: "bus-stop-icon.png"
+      icon: "https://i.imgur.com/Hrp9sZM.png"
     },
     Bathroom: {
-      icon: "toilet-icon.png"
+      icon: "https://i.imgur.com/ZjxUsyQ.png"
     },
     water: {
-      icon: "water-icon.png"
+      icon: "https://i.imgur.com/qr3HVDI.png"
     }
   };
 
